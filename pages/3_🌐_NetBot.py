@@ -10,7 +10,6 @@ from langchain.callbacks import StreamlitCallbackHandler
 st.set_page_config(page_title="ChatWeb", page_icon="🌐")
 st.header('Chatbot with Internet Access')
 st.write('Equipped with internet access, enables users to ask questions about recent events')
-st.write('[![view source code ](https://img.shields.io/badge/view_source_code-gray?logo=github)](https://github.com/shashankdeshpande/langchain-chatbot/blob/master/pages/3_%F0%9F%8C%90_chatbot_with_internet_access.py)')
 
 class ChatbotTools:
 

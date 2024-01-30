@@ -14,7 +14,6 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 st.set_page_config(page_title="ChatPDF", page_icon="📄")
 st.header('Chat with your documents')
 st.write('Has access to custom documents and can respond to user queries by referring to the content within those documents')
-st.write('[![view source code ](https://img.shields.io/badge/view_source_code-gray?logo=github)](https://github.com/shashankdeshpande/langchain-chatbot/blob/master/pages/4_%F0%9F%93%84_chat_with_your_documents.py)')
 
 class CustomDataChatbot:
 
