@@ -7,7 +7,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
+from langchain_community.document_loaders import DirectoryLoader
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import DocArrayInMemorySearch
 
@@ -23,25 +23,12 @@ class CustomDataChatbot:
         utils.configure_openai_api_key()
         self.openai_model = "gpt-3.5-turbo"
 
-    def save_file(self, file):
-        folder = 'tmp'
-        if not os.path.exists(folder):
-            os.makedirs(folder)
-        
-        file_path = f'./{folder}/{file.name}'
-        with open(file_path, 'wb') as f:
-            f.write(file.getvalue())
-        return file_path
-
     @st.spinner('Analyzing documents..')
-    def setup_qa_chain(self, uploaded_files):
-        # Load documents
-        docs = []
-        for file in uploaded_files:
-            file_path = self.save_file(file)
-            loader = PyPDFLoader(file_path)
-            docs.extend(loader.load())
-        
+    def setup_qa_chain(self, folder_path):
+        # Load documents from the directory
+        loader = DirectoryLoader(folder_path)
+        docs = loader.load()
+
         # Split documents
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1500,
@@ -56,10 +43,10 @@ class CustomDataChatbot:
         # Define retriever
         retriever = vectordb.as_retriever(
             search_type='mmr',
-            search_kwargs={'k':2, 'fetch_k':4}
+            search_kwargs={'k': 2, 'fetch_k': 4}
         )
 
-        # Setup memory for contextual conversation        
+        # Setup memory for contextual conversation
         memory = ConversationBufferMemory(
             memory_key='chat_history',
             return_messages=True
@@ -74,15 +61,15 @@ class CustomDataChatbot:
     def main(self):
 
         # User Inputs
-        uploaded_files = st.sidebar.file_uploader(label='Upload PDF files', type=['pdf'], accept_multiple_files=True)
-        if not uploaded_files:
-            st.error("Please upload PDF documents to continue!")
+        folder_path = st.sidebar.text_input(label='Enter the folder path containing PDF files')
+        if not os.path.exists(folder_path):
+            st.error("Invalid folder path. Please provide a valid folder path.")
             st.stop()
 
         user_query = st.chat_input(placeholder="Ask me anything!")
 
-        if uploaded_files and user_query:
-            qa_chain = self.setup_qa_chain(uploaded_files)
+        if folder_path and user_query:
+            qa_chain = self.setup_qa_chain(folder_path)
 
             utils.display_msg(user_query, 'user')
 
