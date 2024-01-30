@@ -2,7 +2,7 @@ import utils
 import streamlit as st
 from streaming import StreamHandler
 
-from langchain.llms import OpenAI
+from langchain_openai import OpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 

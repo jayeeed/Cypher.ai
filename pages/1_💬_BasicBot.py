@@ -2,7 +2,7 @@ import utils
 import streamlit as st
 from streaming import StreamHandler
 
-from langchain.llms import OpenAI
+from langchain_openai import OpenAI
 from langchain.chains import ConversationChain
 
 st.set_page_config(page_title="Basic Chatbot", page_icon="💬")

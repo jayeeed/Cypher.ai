@@ -1,11 +1,12 @@
 import utils
 import streamlit as st
 
-from langchain.agents import AgentType
-from langchain.chat_models import ChatOpenAI
-from langchain.tools import DuckDuckGoSearchRun
-from langchain.agents import initialize_agent, Tool
-from langchain.callbacks import StreamlitCallbackHandler
+from langchain.agents import AgentType, initialize_agent, Tool
+
+from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_community.callbacks import StreamlitCallbackHandler
+
+from langchain_openai import ChatOpenAI
 
 st.set_page_config(page_title="ChatWeb", page_icon="🌐")
 st.header('Chatbot with Internet Access')
