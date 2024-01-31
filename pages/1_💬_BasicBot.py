@@ -2,7 +2,7 @@ import utils
 import streamlit as st
 from streaming import StreamHandler
 
-from langchain_openai import OpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
 
 st.set_page_config(page_title="Basic Chatbot", page_icon="💬")
@@ -15,7 +15,7 @@ class Basic:
         self.openai_model = "gpt-3.5-turbo"
     
     def setup_chain(self):
-        llm = OpenAI(model_name=self.openai_model, temperature=0, streaming=True)
+        llm = ChatOpenAI(model_name=self.openai_model, temperature=0, streaming=True)
         chain = ConversationChain(llm=llm, verbose=True)
         return chain
     
