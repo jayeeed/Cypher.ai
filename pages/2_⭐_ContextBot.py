@@ -2,7 +2,7 @@ import utils
 import streamlit as st
 from streaming import StreamHandler
 
-from langchain_openai import OpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 
@@ -19,7 +19,7 @@ class ContextChatbot:
     @st.cache_resource
     def setup_chain(_self):
         memory = ConversationBufferMemory()
-        llm = OpenAI(model_name=_self.openai_model, temperature=0, streaming=True)
+        llm = ChatOpenAI(model_name=_self.openai_model, temperature=0, streaming=True)
         chain = ConversationChain(llm=llm, memory=memory, verbose=True)
         return chain
     
