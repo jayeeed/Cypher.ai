@@ -8,11 +8,11 @@ from langchain_community.callbacks import StreamlitCallbackHandler
 
 from langchain_openai import ChatOpenAI
 
-st.set_page_config(page_title="ChatWeb", page_icon="🌐")
+st.set_page_config(page_title="NetBot", page_icon="🌐")
 st.header('Chatbot with Internet Access')
 st.write('Equipped with internet access, enables users to ask questions about recent events')
 
-class ChatbotTools:
+class NetBot:
 
     def __init__(self):
         utils.configure_openai_api_key()
@@ -53,5 +53,5 @@ class ChatbotTools:
                 st.write(response)
 
 if __name__ == "__main__":
-    obj = ChatbotTools()
+    obj = NetBot()
     obj.main()

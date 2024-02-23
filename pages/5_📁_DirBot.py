@@ -13,11 +13,11 @@ from langchain_community.vectorstores import DocArrayInMemorySearch
 
 from langchain_openai import ChatOpenAI
 
-st.set_page_config(page_title="ChatPDF", page_icon="📄")
+st.set_page_config(page_title="DirBot", page_icon="📁")
 st.header('Chat with your documents')
 st.write('Has access to custom documents and can respond to user queries by referring to the content within those documents')
 
-class CustomDataChatbot:
+class DirBot:
 
     def __init__(self):
         utils.configure_openai_api_key()
@@ -79,5 +79,5 @@ class CustomDataChatbot:
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":
-    obj = CustomDataChatbot()
+    obj = DirBot()
     obj.main()

@@ -10,14 +10,15 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import DocArrayInMemorySearch
+from transformers import pipeline
 
 from langchain_openai import ChatOpenAI
 
-st.set_page_config(page_title="DocBot", page_icon="📄")
+st.set_page_config(page_title="SumBot", page_icon="☑️")
 st.header('Chat with your documents')
 st.write('Has access to custom documents and can respond to user queries by referring to the content within those documents')
 
-class DocBot:
+class CustomDataChatbot:
 
     def __init__(self):
         utils.configure_openai_api_key()
@@ -32,6 +33,11 @@ class DocBot:
         with open(file_path, 'wb') as f:
             f.write(file.getvalue())
         return file_path
+    
+    def generate_summary(self, text):
+        summarizer = pipeline("summarization")
+        summary = summarizer(text, max_length=150, min_length=30, do_sample=False)
+        return summary[0]['summary_text']
 
     @st.spinner('Analyzing documents..')
     def setup_qa_chain(self, uploaded_files):
@@ -92,5 +98,5 @@ class DocBot:
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":
-    obj = DocBot()
+    obj = CustomDataChatbot()
     obj.main()

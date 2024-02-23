@@ -17,10 +17,12 @@ Langchain is a powerful framework designed to streamline the development of appl
 
 Leveraging the power of Langchain, the creation of chatbots becomes effortless. Here are a few examples of chatbot implementations catering to different use cases:
 
-- **Basic Chatbot**: Engage in interactive conversations with the LLM.
-- **Context aware chatbot**: A chatbot that remembers previous conversations and provides responses accordingly.
-- **Chatbot with Internet Access**: An internet-enabled chatbot capable of answering user queries about recent events.
-- **Chat with your documents** Empower the chatbot with the ability to access custom documents, enabling it to provide answers to user queries based on the referenced information.
+- **BasicBot**: Engage in interactive conversations with the LLM.
+- **ContextBot**: A chatbot that remembers previous conversations and provides responses accordingly.
+- **NetBot**: An internet-enabled chatbot capable of answering user queries about recent events.
+- **DocBot**: Empower the chatbot with the ability to access custom documents, enabling it to provide answers to user queries based on the referenced information.
+- **DirBot**: Empower the chatbot with the ability to access multiple documents, enabling it to provide answers to user queries based on the referenced information.
+- **SumBot**: Empower the chatbot with the ability to access multiple documents, enabling it to provide summary to user queries based on the referenced information.
 
 To explore sample usage of each chatbot, please navigate to the corresponding chatbot section.
 """)

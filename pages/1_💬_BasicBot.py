@@ -5,7 +5,7 @@ from streaming import StreamHandler
 from langchain_openai import ChatOpenAI
 from langchain.chains import ConversationChain
 
-st.set_page_config(page_title="Basic Chatbot", page_icon="💬")
+st.set_page_config(page_title="BasicBot", page_icon="💬")
 st.header('Basic Chatbot')
 st.write('Allows users to interact with the LLM')
 

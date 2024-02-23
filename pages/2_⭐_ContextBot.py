@@ -6,11 +6,11 @@ from langchain_openai import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 
-st.set_page_config(page_title="Context aware chatbot", page_icon="⭐")
+st.set_page_config(page_title="ContextBot", page_icon="⭐")
 st.header('Context aware chatbot')
 st.write('Enhancing Chatbot Interactions through Context Awareness')
 
-class ContextChatbot:
+class ContextBot:
 
     def __init__(self):
         utils.configure_openai_api_key()
@@ -35,5 +35,5 @@ class ContextChatbot:
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":
-    obj = ContextChatbot()
+    obj = ContextBot()
     obj.main()
