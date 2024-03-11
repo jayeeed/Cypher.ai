@@ -7,7 +7,7 @@ from langchain.chains import ConversationChain
 
 st.set_page_config(page_title="BasicBot", page_icon="💬")
 st.header('Basic Chatbot')
-st.write('Allows users to interact with the LLM')
+st.write('Basic **Chatbot** that allows users to ask ***Questions*** and get ***Answers***.')
 
 class Basic:
     def __init__(self):

@@ -15,7 +15,7 @@ from langchain_openai import ChatOpenAI
 
 st.set_page_config(page_title="DocBot", page_icon="📄")
 st.header('Chat with your documents')
-st.write('Has access to custom documents and can respond to user queries by referring to the content within those documents')
+st.write('**Chatbot** that allows users to ask questions about ***Documents***.')
 
 class DocBot:
 

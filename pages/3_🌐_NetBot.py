@@ -10,7 +10,7 @@ from langchain_openai import ChatOpenAI
 
 st.set_page_config(page_title="NetBot", page_icon="🌐")
 st.header('Chatbot with Internet Access')
-st.write('Equipped with internet access, enables users to ask questions about recent events')
+st.write('Internet accessed **Chatbot** that allows users to ask questions about ***Latest*** events.')
 
 class NetBot:
 
