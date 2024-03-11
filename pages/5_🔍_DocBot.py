@@ -13,7 +13,7 @@ from langchain_community.vectorstores import DocArrayInMemorySearch
 
 from langchain_openai import ChatOpenAI
 
-st.set_page_config(page_title="DocBot", page_icon="📄")
+st.set_page_config(page_title="DocBot", page_icon="🔍")
 st.header('Chat with your documents')
 st.write('**Chatbot** that allows users to ask questions about ***Documents***.')
 

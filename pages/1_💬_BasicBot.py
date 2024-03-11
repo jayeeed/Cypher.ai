@@ -12,10 +12,10 @@ st.write('Basic **Chatbot** that allows users to ask ***Questions*** and get ***
 class Basic:
     def __init__(self):
         utils.configure_openai_api_key()
-        self.openai_model = "gpt-3.5-turbo"
+        self.openai_model = "gpt-3.5-turbo-0125"
     
     def setup_chain(self):
-        llm = ChatOpenAI(model_name=self.openai_model, temperature=0, streaming=True)
+        llm = ChatOpenAI(model_name=self.openai_model, temperature=0.1, streaming=True, max_tokens=1000)
         chain = ConversationChain(llm=llm, verbose=True)
         return chain
     

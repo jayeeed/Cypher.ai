@@ -43,5 +43,3 @@ def configure_openai_api_key():
 
     os.environ['OPENAI_API_KEY'] = openai_api_key
     return openai_api_key
-
-configure_openai_api_key()
