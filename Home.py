@@ -15,7 +15,8 @@ st.set_page_config(
 st.markdown("""
 # :blue[Cypher.ai] 🤖
 ## Order your :rainbow[Personalized Chatbot] soon!
-&nbsp;
+""")
+st.markdown("""
 #### 1. What is :blue[Cypher.ai]? 
 
 Cypher.ai offers a suite of **Chatbots** to help users interact with the data.

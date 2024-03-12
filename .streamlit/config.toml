@@ -1,2 +1,8 @@
 [theme]
 base="dark"
+
+[server]
+port = 8000
+headless = true
+runOnSave = true
+maxUploadSize = 50
