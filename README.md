@@ -1,6 +1,6 @@
 # Chatbot Implementations with Langchain + Streamlit
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://langchain-chatbot.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cypher-ai.streamlit.app/)
 
 Langchain is a powerful framework designed to streamline the development of applications using Language Models (LLMs). \
 It provides a comprehensive integration of various components, simplifying the process of assembling them to create robust applications.
