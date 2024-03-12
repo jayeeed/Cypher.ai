@@ -8,8 +8,10 @@ from langchain_community.callbacks import StreamlitCallbackHandler
 
 from langchain_openai import ChatOpenAI
 
-st.set_page_config(page_title="NetBot", page_icon="🌐")
-st.header('Chatbot with Internet Access')
+st.set_page_config(page_title="NetBot", page_icon="🌐", initial_sidebar_state='collapsed')
+st.page_link("Home.py", label="Back to Home", icon="🏠")
+
+st.header('***Internet*** accessed Chatbot')
 st.write('Internet accessed **Chatbot** that allows users to ask questions about ***Latest*** events.')
 
 class NetBot:

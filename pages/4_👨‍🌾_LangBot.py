@@ -7,9 +7,11 @@ from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 
-st.set_page_config(page_title="ContextBot", page_icon="🇧🇩")
-st.header('Context aware chatbot')
-st.write('User Conversational **Chatbot** that allows users ***Chat*** and ***Remember*** their previous interactions.')
+st.set_page_config(page_title="LangBot", page_icon="👨‍🌾", initial_sidebar_state='collapsed')
+st.page_link("Home.py", label="Back to Home", icon="🏠")
+
+st.header('***MultiLingual*** Conversational Chatbot')
+st.write('Conversational **Chatbot** that allows users ***Chat*** and ***Remember*** their previous interactions.')
 
 class LangBot:
     def __init__(self):

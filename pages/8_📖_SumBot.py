@@ -14,11 +14,13 @@ from transformers import pipeline
 
 from langchain_openai import ChatOpenAI
 
-st.set_page_config(page_title="SumBot", page_icon="☑️")
-st.header('Chat with your documents')
+st.set_page_config(page_title="SumBot", page_icon="☑️", initial_sidebar_state='collapsed')
+st.page_link("Home.py", label="Back to Home", icon="🏠")
+
+st.header('***Document*** Summerization Chatbot')
 st.write('**Chatbot** that allows users to ask questions about ***Summerization*** of ***Documents***.')
 
-class CustomDataChatbot:
+class SumBot:
 
     def __init__(self):
         utils.configure_openai_api_key()
@@ -98,5 +100,5 @@ class CustomDataChatbot:
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":
-    obj = CustomDataChatbot()
+    obj = SumBot()
     obj.main()

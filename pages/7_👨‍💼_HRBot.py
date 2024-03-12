@@ -13,8 +13,10 @@ from langchain_community.vectorstores import DocArrayInMemorySearch
 
 from langchain_openai import ChatOpenAI
 
-st.set_page_config(page_title="HRBot", page_icon="👨‍💼")
-st.header('Chat with your documents')
+st.set_page_config(page_title="HRBot", page_icon="👨‍💼", initial_sidebar_state='collapsed')
+st.page_link("Home.py", label="Back to Home", icon="🏠")
+
+st.header('Multi ***Document*** Chatbot')
 st.write('**Chatbot** that allows users to ask questions about all ***Documents*** in the ***Directories***.')
 
 class HRBot:

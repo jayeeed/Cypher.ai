@@ -16,6 +16,21 @@ st.markdown("""
 # :blue[Cypher.ai] 🤖
 ## Order your :rainbow[Personalized Chatbot] soon!
 """)
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.page_link("pages/1_💬_QABot.py", label="Q/ABot", icon="💬")
+    st.page_link("pages/2_⭐_ConvoBot.py", label="ConvoBot", icon="⭐")
+    st.page_link("pages/5_🌐_NetBot.py", label="NetBot", icon="🌐")
+with col2:
+    st.page_link("pages/4_👨‍🌾_LangBot.py", label="LangBot", icon="👨‍🌾")
+    st.page_link("pages/3_🇧🇩_BanglaBot.py", label="BanglaBot", icon="🇧🇩")
+    st.page_link("pages/6_🔍_DocBot.py", label="DocBot", icon="🔍")
+with col3:
+    st.page_link("pages/7_👨‍💼_HRBot.py", label="HRBot", icon="👨‍💼")
+    st.page_link("pages/8_📖_SumBot.py", label="SumBot", icon="📖")
+
 st.markdown("""
 #### 1. What is :blue[Cypher.ai]? 
 

@@ -6,7 +6,7 @@
 
 Cypher.ai offers a suite of **Chatbots** to help users interact with the data.
 
-## 💬 Sample chatbot use cases
+## 💬 Some of the Chatbots we offer
 
 - **Q/ABot**: Basic **Chatbot** that allows users to ask **_Questions_** and get **_Answers_**.
 - **ConvoBot**: Conversational **Chatbot** that allows users **_Chat_** and **_Remember_** their previous interactions.

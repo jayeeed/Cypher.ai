@@ -6,11 +6,13 @@ from langchain_openai import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 
-st.set_page_config(page_title="ContextBot", page_icon="⭐")
-st.header('Conversational Chatbot')
+st.set_page_config(page_title="ContextBot", page_icon="⭐", initial_sidebar_state='collapsed')
+st.page_link("Home.py", label="Back to Home", icon="🏠")
+
+st.header('***Conversational*** Chatbot')
 st.write('Conversational **Chatbot** that allows users ***Chat*** and ***Remember*** their previous interactions.')
 
-class ContextBot:
+class ConvoBot:
     def __init__(self):
         utils.configure_openai_api_key()
         self.openai_model = "gpt-3.5-turbo-0125"
@@ -34,5 +36,5 @@ class ContextBot:
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":
-    obj = ContextBot()
+    obj = ConvoBot()
     obj.main()

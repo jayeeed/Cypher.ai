@@ -5,11 +5,13 @@ from streaming import StreamHandler
 from langchain_openai import ChatOpenAI
 from langchain.chains import ConversationChain
 
-st.set_page_config(page_title="BasicBot", page_icon="💬")
-st.header('Basic Chatbot')
+st.set_page_config(page_title="BasicBot", page_icon="💬", initial_sidebar_state='collapsed')
+st.page_link("Home.py", label="Back to Home", icon="🏠")
+
+st.header('***Basic*** Chatbot')
 st.write('Basic **Chatbot** that allows users to ask ***Questions*** and get ***Answers***.')
 
-class Basic:
+class QABot:
     def __init__(self):
         utils.configure_openai_api_key()
         self.openai_model = "gpt-3.5-turbo-0125"
@@ -31,5 +33,5 @@ class Basic:
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":
-    obj = Basic()
+    obj = QABot()
     obj.main()

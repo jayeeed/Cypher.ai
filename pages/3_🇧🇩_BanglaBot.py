@@ -7,7 +7,9 @@ from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 
-st.set_page_config(page_title="ContextBot", page_icon="🇧🇩")
+st.set_page_config(page_title="ContextBot", page_icon="🇧🇩", initial_sidebar_state='collapsed')
+st.page_link("Home.py", label="Back to Home", icon="🏠")
+
 st.header('***Bengali*** Conversational Chatbot')
 st.write('***Bengali*** Conversational **Chatbot** that allows users ***Chat*** and ***Remember*** their previous interactions.')
 
