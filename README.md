@@ -1,6 +1,6 @@
 # Chatbot Implementations with Langchain + Streamlit
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://langchain-chatbot.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://cypher-ai.streamlit.app/)
 
 Langchain is a powerful framework designed to streamline the development of applications using Language Models (LLMs). \
 It provides a comprehensive integration of various components, simplifying the process of assembling them to create robust applications.
@@ -21,7 +21,7 @@ Here are a few examples of chatbot implementations using Langchain and Streamlit
 
 ## <img src="https://streamlit.io/images/brand/streamlit-mark-color.png" width="40" height="22"> Streamlit App
 Created a multi-page streamlit app containing all sample chatbot use cases. \
-You can access this app through this link: [Live](https://lc-saas.streamlit.app)
+You can access this app through this link: [Live](https://cypher-ai.streamlit.app/)
 
 ## 🖥️ Running locally
 ```shell
