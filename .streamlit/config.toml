@@ -1,8 +1,27 @@
+[global]
+showWarningOnDirectExecution = true
+
 [theme]
 base="dark"
+
+[logger]
+level = "info"
+
+[client]
+toolbarMode = "viewer"
+
+[runner]
+magicEnabled = true
+fastReruns = true
 
 [server]
 port = 8000
 headless = true
 runOnSave = true
 maxUploadSize = 50
+fileWatcherType = "auto"
+enableCORS = true
+
+[browser]
+serverAddress = "localhost"
+serverPort = 8000
