@@ -21,7 +21,7 @@ Here are a few examples of chatbot implementations using Langchain and Streamlit
 
 ## <img src="https://streamlit.io/images/brand/streamlit-mark-color.png" width="40" height="22"> Streamlit App
 Created a multi-page streamlit app containing all sample chatbot use cases. \
-You can access this app through this link: [Live](https://lc-saas.streamlit.app)
+You can access this app through this link: [Live](https://cypher-ai.streamlit.app/)
 
 ## 🖥️ Running locally
 ```shell
