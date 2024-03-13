@@ -6,14 +6,12 @@ from streaming import StreamHandler
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-
+from langchain_community.vectorstores import Chroma
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.document_loaders import DirectoryLoader
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import DocArrayInMemorySearch
 
-from langchain_openai import ChatOpenAI
 
-st.set_page_config(page_title="HRBot", page_icon="👨‍💼", initial_sidebar_state='collapsed')
+st.set_page_config(page_title="HRBot", page_icon="👨‍💼", initial_sidebar_state='expanded')
 st.page_link("Home.py", label="Back to Home", icon="🏠")
 
 st.header('Multi ***Document*** Chatbot')
@@ -23,12 +21,12 @@ class HRBot:
 
     def __init__(self):
         utils.configure_openai_api_key()
-        self.openai_model = "gpt-3.5-turbo"
+        self.openai_model = "gpt-3.5-turbo-0125"
 
     @st.spinner('Analyzing documents..')
     def setup_qa_chain(self, folder_path):
         # Load documents from the directory
-        loader = DirectoryLoader(folder_path)
+        loader = DirectoryLoader(folder_path, show_progress=True)
         docs = loader.load()
 
         # Split documents
@@ -39,8 +37,8 @@ class HRBot:
         splits = text_splitter.split_documents(docs)
 
         # Create embeddings and store in vectordb
-        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-        vectordb = DocArrayInMemorySearch.from_documents(splits, embeddings)
+        embeddings = OpenAIEmbeddings()
+        vectordb = Chroma.from_documents(splits, embeddings)
 
         # Define retriever
         retriever = vectordb.as_retriever(
@@ -77,7 +75,7 @@ class HRBot:
 
             with st.chat_message("assistant"):
                 st_cb = StreamHandler(st.empty())
-                response = qa_chain.run(user_query, callbacks=[st_cb])
+                response = qa_chain.invoke(user_query, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":

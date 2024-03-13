@@ -6,14 +6,11 @@ from streaming import StreamHandler
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-
+from langchain_community.vectorstores import Chroma
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import DocArrayInMemorySearch
 
-from langchain_openai import ChatOpenAI
-
-st.set_page_config(page_title="DocBot", page_icon="🔍", initial_sidebar_state='collapsed')
+st.set_page_config(page_title="DocBot", page_icon="🔍", initial_sidebar_state='expanded')
 st.page_link("Home.py", label="Back to Home", icon="🏠")
 
 st.header('***Document*** Chatbot')
@@ -23,7 +20,7 @@ class DocBot:
 
     def __init__(self):
         utils.configure_openai_api_key()
-        self.openai_model = "gpt-3.5-turbo"
+        self.openai_model = "gpt-3.5-turbo-0125"
 
     def save_file(self, file):
         folder = 'tmp'
@@ -52,8 +49,8 @@ class DocBot:
         splits = text_splitter.split_documents(docs)
 
         # Create embeddings and store in vectordb
-        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-        vectordb = DocArrayInMemorySearch.from_documents(splits, embeddings)
+        embeddings = OpenAIEmbeddings()
+        vectordb = Chroma.from_documents(splits, embeddings)
 
         # Define retriever
         retriever = vectordb.as_retriever(
@@ -90,7 +87,7 @@ class DocBot:
 
             with st.chat_message("assistant"):
                 st_cb = StreamHandler(st.empty())
-                response = qa_chain.run(user_query, callbacks=[st_cb])
+                response = qa_chain.invoke(user_query, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":

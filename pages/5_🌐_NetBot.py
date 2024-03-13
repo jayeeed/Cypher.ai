@@ -18,7 +18,7 @@ class NetBot:
 
     def __init__(self):
         utils.configure_openai_api_key()
-        self.openai_model = "gpt-3.5-turbo"
+        self.openai_model = "gpt-3.5-turbo-0125"
 
     def setup_agent(self):
         # Define tool

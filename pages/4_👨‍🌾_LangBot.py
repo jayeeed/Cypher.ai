@@ -7,7 +7,7 @@ from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 
-st.set_page_config(page_title="LangBot", page_icon="👨‍🌾", initial_sidebar_state='collapsed')
+st.set_page_config(page_title="LangBot", page_icon="👨‍🌾", initial_sidebar_state='expanded')
 st.page_link("Home.py", label="Back to Home", icon="🏠")
 
 st.header('***MultiLingual*** Conversational Chatbot')
@@ -44,7 +44,7 @@ class LangBot:
             with st.chat_message("assistant"):
                 st_cb = StreamHandler(st.empty())
                 prompt = self.prompt_template.format(user_query=user_query, bot_name="MultiLang", language=self.selected_language)
-                response = chain.run(user_query + " " + prompt, callbacks=[st_cb])
+                response = chain.invoke(user_query + " " + prompt, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":

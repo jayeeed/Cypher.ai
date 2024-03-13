@@ -2,3 +2,4 @@ __pycache__
 tmp
 .env
 .venv
+old_requirements.txt
