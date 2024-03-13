@@ -3,3 +3,4 @@ tmp
 .env
 .venv
 old_requirements.txt
+req.txt
