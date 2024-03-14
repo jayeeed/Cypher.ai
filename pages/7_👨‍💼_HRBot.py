@@ -75,7 +75,7 @@ class HRBot:
 
             with st.chat_message("assistant"):
                 st_cb = StreamHandler(st.empty())
-                response = qa_chain.invoke(user_query, callbacks=[st_cb])
+                response = qa_chain.run(user_query, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":

@@ -32,7 +32,7 @@ class ConvoBot:
             utils.display_msg(user_query, 'user')
             with st.chat_message("assistant"):
                 st_cb = StreamHandler(st.empty())
-                response = chain.invoke(user_query, callbacks=[st_cb])
+                response = chain.run(user_query, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
 
 if __name__ == "__main__":
