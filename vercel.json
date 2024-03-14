@@ -1,0 +1,15 @@
+{
+  "devCommand": "streamlit run Home.py",
+  "builds": [
+    {
+      "src": "Home.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "Home.py"
+    }
+  ]
+}
