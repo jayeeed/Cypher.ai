@@ -10,18 +10,19 @@ from langchain_community.vectorstores import Chroma
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.document_loaders import DirectoryLoader
 
-
 st.set_page_config(page_title="HRBot", page_icon="👨‍💼", initial_sidebar_state='expanded')
 st.page_link("Home.py", label="Back to Home", icon="🏠")
 
 st.header('Multi ***Document*** Chatbot')
 st.write('**Chatbot** that allows users to ask questions about all ***Documents*** in the ***Directories***.')
 
+
 class HRBot:
 
     def __init__(self):
         utils.configure_openai_api_key()
         self.openai_model = "gpt-3.5-turbo-0125"
+
 
     @st.spinner('Analyzing documents..')
     def setup_qa_chain(self, folder_path):
@@ -57,6 +58,7 @@ class HRBot:
         qa_chain = ConversationalRetrievalChain.from_llm(llm, retriever=retriever, memory=memory, verbose=True)
         return qa_chain
 
+
     @utils.enable_chat_history
     def main(self):
 
@@ -77,6 +79,7 @@ class HRBot:
                 st_cb = StreamHandler(st.empty())
                 response = qa_chain.run(user_query, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
+
 
 if __name__ == "__main__":
     obj = HRBot()

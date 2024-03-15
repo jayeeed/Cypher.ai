@@ -11,15 +11,19 @@ st.page_link("Home.py", label="Back to Home", icon="🏠")
 st.header('***Basic*** Chatbot')
 st.write('Basic **Chatbot** that allows users to ask ***Questions*** and get ***Answers***.')
 
+
 class QABot:
+    
     def __init__(self):
         utils.configure_openai_api_key()
         self.openai_model = "gpt-3.5-turbo-0125"
     
+
     def setup_chain(self):
         llm = ChatOpenAI(model_name=self.openai_model, temperature=0.1, streaming=True, max_tokens=1000)
         chain = ConversationChain(llm=llm, verbose=True)
         return chain
+    
     
     @utils.enable_chat_history
     def main(self):
@@ -31,6 +35,7 @@ class QABot:
                 st_cb = StreamHandler(st.empty())
                 response = chain.run(user_query, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
+
 
 if __name__ == "__main__":
     obj = QABot()

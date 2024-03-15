@@ -16,11 +16,13 @@ st.page_link("Home.py", label="Back to Home", icon="🏠")
 st.header('***Document*** Chatbot')
 st.write('**Chatbot** that allows users to ask questions about ***Documents***.')
 
+
 class DocBot:
 
     def __init__(self):
         utils.configure_openai_api_key()
         self.openai_model = "gpt-3.5-turbo-0125"
+
 
     def save_file(self, file):
         folder = 'tmp'
@@ -31,6 +33,7 @@ class DocBot:
         with open(file_path, 'wb') as f:
             f.write(file.getvalue())
         return file_path
+
 
     @st.spinner('Analyzing documents..')
     def setup_qa_chain(self, uploaded_files):
@@ -69,6 +72,7 @@ class DocBot:
         qa_chain = ConversationalRetrievalChain.from_llm(llm, retriever=retriever, memory=memory, verbose=True)
         return qa_chain
 
+
     @utils.enable_chat_history
     def main(self):
 
@@ -89,6 +93,7 @@ class DocBot:
                 st_cb = StreamHandler(st.empty())
                 response = qa_chain.run(user_query, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
+
 
 if __name__ == "__main__":
     obj = DocBot()

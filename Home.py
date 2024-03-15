@@ -31,8 +31,10 @@ with col2:
     
 with col3:
     st.page_link("pages/7_👨‍💼_HRBot.py", label="HRBot", icon="👨‍💼")
-    # st.page_link("pages/8_📖_SumBot.py", label="SumBot", icon="📖")
+    st.page_link("pages/8_💻_CodeBot.py", label="CodeBot", icon="💻")
 
+    # st.page_link("pages/8_📖_SumBot.py", label="SumBot", icon="📖")
+    
 st.markdown("""
 #### 1. What is :blue[Cypher.ai]? 
 

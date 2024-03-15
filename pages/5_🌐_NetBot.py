@@ -1,12 +1,10 @@
 import utils
 import streamlit as st
 
+from langchain_openai import ChatOpenAI
 from langchain.agents import AgentType, initialize_agent, Tool
-
 from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_community.callbacks import StreamlitCallbackHandler
-
-from langchain_openai import ChatOpenAI
 
 st.set_page_config(page_title="NetBot", page_icon="🌐", initial_sidebar_state='collapsed')
 st.page_link("Home.py", label="Back to Home", icon="🏠")
@@ -14,14 +12,15 @@ st.page_link("Home.py", label="Back to Home", icon="🏠")
 st.header('***Internet*** accessed Chatbot')
 st.write('Internet accessed **Chatbot** that allows users to ask questions about ***Latest*** events.')
 
+
 class NetBot:
 
     def __init__(self):
         utils.configure_openai_api_key()
         self.openai_model = "gpt-3.5-turbo-0125"
 
+
     def setup_agent(self):
-        # Define tool
         ddg_search = DuckDuckGoSearchRun()
         tools = [
             Tool(
@@ -30,8 +29,7 @@ class NetBot:
                 description="Useful for when you need to answer questions about current events. You should ask targeted questions",
             )
         ]
-
-        # Setup LLM and Agent
+        
         llm = ChatOpenAI(model_name=self.openai_model, streaming=True)
         agent = initialize_agent(
             tools=tools,
@@ -41,6 +39,7 @@ class NetBot:
             verbose=True
         )
         return agent
+
 
     @utils.enable_chat_history
     def main(self):
@@ -53,6 +52,7 @@ class NetBot:
                 response = agent.run(user_query, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
                 st.write(response)
+
 
 if __name__ == "__main__":
     obj = NetBot()
