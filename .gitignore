@@ -4,3 +4,4 @@ tmp
 .venv
 old_requirements.txt
 req.txt
+test
