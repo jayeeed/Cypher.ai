@@ -19,9 +19,9 @@ class CodeBot:
     def __init__(self):
         utils.configure_openai_api_key()
         self.openai_model = "gpt-3.5-turbo-0125"
-        self.languages = ["", "Python", "Javascript", "Typescript", "Rust", "Java", "C++", "C#"]
-        self.complexity = ["Simple", "Moderate", "Complex"]
-        self.comment = ["With", "Without"]
+        self.languages = ["", "Python", "Javascript", "Rust", "Java", "C++", "C#"]
+        self.complexity = ["", "Simple", "Moderate", "Complex"]
+        self.comment = ["", "With", "Without"]
 
         self.selected_language = st.sidebar.selectbox("Select Language:", options=self.languages)
         self.selected_complexity = st.sidebar.selectbox("Select Complexity:", options=self.complexity)
@@ -30,8 +30,9 @@ class CodeBot:
         self.prompt_template = PromptTemplate.from_template(
             """
             You a helpful assistant that generate {complexity} code in {language} {comment} comments.
-            
-            Answer in {language}: {user_query}
+
+            Question: {user_query}
+            Answer: 
             """
         )
 
@@ -39,7 +40,7 @@ class CodeBot:
     @st.cache_resource
     def setup_chain(_self):
         memory = ConversationBufferMemory()
-        llm = ChatOpenAI(model_name=_self.openai_model, temperature=0.1, streaming=True, max_tokens=4098)
+        llm = ChatOpenAI(model_name=_self.openai_model, temperature=0.1, streaming=True, max_tokens=4096)
         chain = ConversationChain(llm=llm, memory=memory, verbose=True)
         return chain
     
@@ -52,7 +53,7 @@ class CodeBot:
             utils.display_msg(user_query, 'user')
             with st.chat_message("assistant"):
                 st_cb = StreamHandler(st.empty())
-                
+
                 prompt = self.prompt_template.format(
                     user_query=user_query, 
                     language=self.selected_language, 
@@ -61,6 +62,11 @@ class CodeBot:
                 
                 response = chain.run(user_query + " " + prompt, callbacks=[st_cb])
                 st.session_state.messages.append({"role": "assistant", "content": response})
+
+        if st.sidebar.button("Clear Chat History"):
+            st.session_state.messages = []
+            chain.memory.clear()
+            st.rerun()
 
 
 if __name__ == "__main__":
