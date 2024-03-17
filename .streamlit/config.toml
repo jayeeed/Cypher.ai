@@ -15,7 +15,7 @@ magicEnabled = true
 fastReruns = true
 
 [server]
-port = 8000
+port = 8080
 headless = true
 runOnSave = true
 maxUploadSize = 50
@@ -24,4 +24,4 @@ enableCORS = true
 
 [browser]
 serverAddress = "localhost"
-serverPort = 8000
+serverPort = 8080
