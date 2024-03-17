@@ -5,3 +5,4 @@ tmp
 old_requirements.txt
 req.txt
 test
+.streamlit/secrets.toml
